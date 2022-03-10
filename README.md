@@ -28,3 +28,5 @@ One thing that could have saved time was to use a custom color scale for the vis
 
 Also, a very important decision was to use the square root scale for translating population and density data to the area of the circles, given that the area of a circle is equal to pi times the radius squared. I was also careful to use a hierarchy of font sizes for titles and subheading, as well as varying font weights to call attention to salient points in this chart.
 
+One challenge was to get the smaller circles to appear in front of the larger ones. In order to do this, I utilized `useMemo` to re-sort the data, from highest values of population or density to the lowest ones, every time the dependency array with the selected value changed.
+
