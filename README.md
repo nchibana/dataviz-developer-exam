@@ -16,7 +16,7 @@ In order to implement the tooltips and dropdown menu, I used the React component
 
 ## How Application Works
 
-You can run `npm install` and `npm start` in the project's directory on your local computer to run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. From the `build` folder, you can also run `python -m http.server 3000` to view it in your browser.
+You can run `npm install` and `npm start` in the project's directory on your local computer to run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 In the interest of time, I have also deployed this to a private site, which you can visit [here](https://mckinsey-developer-exam.netlify.app/). The password will be provided in an email.
 
