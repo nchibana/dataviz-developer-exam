@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# McKinsey Data Visualization Developer Exam
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Description of Components
 
-In the project directory, you can run:
+Following the advice of Amelia Wattenberger on how to use React and D3 together in a way that capitalizes on the strengths of both frameworks--as they are both competing for control over the DOM--I decided to use D3 for creating scales and math calculations and used React for the rendering. Much of the ideas for the way I am structuring this project comes from her articles and blogs.
 
-### `npm start`
+I decided to create sibling components `ScatterPlot` and `Dropdown` under the parent `App`. This way, I was able to handle the selected value from the dropdown and pass data to these sibling components. For example, when `Dropdown` sets the value of the view selected, whether that is "Population" or "Density", then it will update the parent state and re-render `ScatterPlot`. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In the latter, I create scales for mapping GDP data to a logarithmic scale and also mapping density and population data to the area of a circle using a square root scale.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+I also created a `Chart` component as a parent to child components `Axis` and `Circles`, which draw the axes and circles on the scatterplot. `Chart` is a simple component that just needs one prop, which is dimensions, and since all charts will need a canvas, this can be seen as a resuable component for any type of chart.
 
-### `npm test`
+In order to implement the tooltips and dropdown menu, I used the React component Material UI library. In order to get the tooltips working, I had to pass down the selected value to the `Circles` component and then conditionally render certain HTML, depending on whether "Population" or "Density" was chosen from the options.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How Application Works
 
-### `npm run build`
+You can run `npm install` and `npm start` in the project's directory on your local computer to run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. From the `build` folder, you can also run `python -m http.server 3000` to view it in your browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In the interest of time, I have also deployed this to a private site, which you can visit [here](https://mckinsey-developer-exam.netlify.app/). The password will be provided in an email.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Data Visualization Choices
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Given that many of the design choices made in the creation of this visualization were appropriate, in my opinion, such as the use of a logarithmic scale to better view trends in the data and the omission of some tick lines to declutter the chart and reduce ink-to-data ratio, I didn't make many modifications to the original chart. 
 
-### `npm run eject`
+One thing that could have saved time was to use a custom color scale for the visualization of the physical risk category, but I decided to use the discreet color codes provided in the instructions. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Also, a very important decision was to use the square root scale for translating population and density data to the area of the circles, given that the area of a circle is equal to pi times the radius squared. I was also careful to use a hierarchy of font size for titles and subheading, as well as varying font weights to call attention to salient points in this chart.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
